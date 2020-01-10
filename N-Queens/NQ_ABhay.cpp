@@ -46,7 +46,7 @@ void NQueens(int k, int N, int x[])
 		{
 		//printArray(x,N);
 			x[k] = i;
-			//printArray(x,N);
+			//printBoard(x,N);
 			if(k==N)
 			{
 				cout<<"Solution:";

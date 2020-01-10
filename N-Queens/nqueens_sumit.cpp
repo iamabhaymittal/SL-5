@@ -38,7 +38,7 @@ void nQueens(int k,int n)
 
 int main()
 {
-	int n=4;
+	int n=8;
 	for(int i=1;i<=n;i++)
 		nQueens(i,n);
 
