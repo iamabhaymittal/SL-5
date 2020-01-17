@@ -158,6 +158,7 @@ int search_in_littab(char literal[],int ptp)
 	}
 	return -1;	
 }
+
 void process_tokens(char ** tokens,int no_of_tokens)
 {
 	int i,ind,ind1,inds,indl,lc_old,pool_pointer,last_token;
@@ -441,6 +442,8 @@ int main()
    		process_tokens(tokens,no_of_tokens);	 
     		line_size = getline(&line_buf, &line_buf_size, fp);  
     		free(tokens); 
+	
+	
 	}
 	line_buf=NULL;
 	i=1;

@@ -175,7 +175,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	{
 		if(strcmp(tokens[1],"START")==0)
 		{
-			ic=fopen("ic.text","w");
+			ic=fopen("inter_code.txt","w");
 			lc_old=lc;
 			lc=atoi(tokens[2]);
 			fprintf(ic,"%d\tAD01 C%s\n",lc_old,tokens[2]);
@@ -183,7 +183,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 		}
 		else
 		{
-			ic=fopen("ic.text","a");
+			ic=fopen("inter_code.txt","a");
 			lc_old=lc;
 			if(isalpha(*tokens[2]))
 			{
@@ -223,7 +223,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	}
 	else if(strcmp(tokens[1],"LTORG")==0)
 	{
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		fprintf(ic,"%d\tAD03\n",lc);
 		pool_pointer=0;
 		while(pooltab[pool_pointer]!=-1)
@@ -243,7 +243,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	}
 	else if(strcmp(tokens[1],"END")==0)
 	{
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		fprintf(ic,"%d\tAD02\n",lc);
 		pool_pointer=0;
 		while(pooltab[pool_pointer]!=-1)
@@ -263,7 +263,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	else if(strcmp(tokens[1],"EQU")==0)
 	{
 		
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		fprintf(ic,"%d\tAD05\n",lc);
 		ind=search_in_symtab(tokens[0]);
 		if(ind!=-1)
@@ -278,7 +278,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	}
 	else if(strcmp(tokens[1],"DS")==0||strcmp(tokens[1],"DC")==0)
 	{
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		if(strcmp(tokens[1],"DS")==0)
 		{
 			fprintf(ic,"%d\tDL02 C%s\n",lc,tokens[2]);
@@ -307,7 +307,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	}
 	else if(strcmp(tokens[1],"STOP")!=0)
 	{
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		ind=search(tokens[1]);
 		if(ind==-1)
 			printf("\nerror! mnemonic %s not found ",tokens[1]);
@@ -394,7 +394,7 @@ void process_tokens(char ** tokens,int no_of_tokens)
 	}
 	else
 	{
-		ic=fopen("ic.text","a");
+		ic=fopen("inter_code.txt","a");
 		fprintf(ic,"%d\tIS00\n",lc);
 		lc++;
 		fclose(ic);
@@ -464,7 +464,7 @@ int main()
 	}
 	printf("\n");
 	fclose(fp);
-	fp=fopen("symtab.txt","w");
+	fp=fopen("sym_tab.txt","w");
 	i=1;
 	fprintf(fp,"\n*************************SYMBOL TABLE****************************\n");
 	while(strcmp(symtab[i].sym_name,"")!=0)
@@ -479,7 +479,7 @@ int main()
 	}
 	fclose(fp);
 	i=1;
-	fp=fopen("littab.txt","w");
+	fp=fopen("lit_tab.txt","w");
 	fprintf(fp,"\n*************************LITERAL TABLE****************************\n");
 	while(strcmp(littab[i].lit_name,"")!=0)
 	{
