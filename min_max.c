@@ -92,3 +92,7 @@ void main()
     struct min_max result = maxMin(0, size - 1);
     printf("%d %d", result.max, result.min);
 }
+
+
+
+
